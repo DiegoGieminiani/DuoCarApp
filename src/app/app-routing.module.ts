@@ -8,8 +8,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'switch-user',
     pathMatch: 'full'
+  },
+  {
+    path: 'switch-user',
+    loadChildren: () => import('./switch-user/switch-user.module').then( m => m.SwitchUserPageModule)
+  },
+  {
+    path: 'login/:userType', // para pasar un parametro por path se usa :parametro
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
 ];
 
