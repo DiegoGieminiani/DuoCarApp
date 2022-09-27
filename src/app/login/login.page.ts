@@ -13,8 +13,8 @@ export class LoginPage implements OnInit {
   loginType = this.route.snapshot.paramMap.get('userType');
   value = "dcaresg";
   usuario = new FormGroup({
-    user: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(8)]),
-    pass: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(8)]),
+    user: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(20)]),
+    pass: new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(20)]),
   });
 
   constructor(private route: ActivatedRoute,private router: Router, private alertController:AlertController) { }
@@ -26,24 +26,24 @@ export class LoginPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       state: {user: this.usuario.value.user}
       };
-      this.router.navigate(['/home'],navigationExtras); // Esta linea es la que me permite navegar a otro page 
+      this.router.navigate([`/home/${navigationExtras.state.user}`],navigationExtras); // Esta linea es la que me permite navegar a otro page
   }
 
   //Metodo para navegar desde un metodo llamado desde el html
   goToPagina2(){
     console.log("entramos al metodo");
-    if("dcaresg"==this.usuario.value.user){
+    if("scrumMaster"==this.usuario.value.user){
       this.sendDetailsWithState();
     }else{
       this.presentAlert();
     }
-    
+
     // this.navCtrl.navigateForward('/home');
   }
 
- 
 
-  //Metodo de alerta 
+
+  //Metodo de alerta
    async presentAlert(){
      const alert = await this.alertController.create({
        header: 'Error Login',
