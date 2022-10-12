@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes, } from '@angular/router';
 import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
@@ -24,10 +24,15 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then( m => m.PageNotFoundPageModule)
-  },  {
+  },
+  {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },  {
+    path: 'register-car',
+    loadChildren: () => import('./register-car/register-car.module').then( m => m.RegisterCarPageModule)
   },
+
 
 ];
 
