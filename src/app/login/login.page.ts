@@ -11,7 +11,6 @@ import { Router,NavigationExtras } from '@angular/router';
 })
 export class LoginPage implements OnInit {
   loginType = this.route.snapshot.paramMap.get('userType');
-  value = "dcaresg";
   usuario = new FormGroup({
     user: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(20)]),
     pass: new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(20)]),
@@ -37,6 +36,7 @@ export class LoginPage implements OnInit {
     }else{
       this.presentAlert();
     }
+
 
     // this.navCtrl.navigateForward('/home');
   }

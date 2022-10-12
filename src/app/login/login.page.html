@@ -31,19 +31,14 @@
           </div>
 
           <div>
-            <ion-button
-              expand="full"
-              type="submit"
-              (click)="goToPagina2()"
-              >Iniciar sesión</ion-button
-            >
+
+            <ion-button expand="full" type="submit"(click)="goToPagina2()">Iniciar sesión</ion-button>
+
           </div>
           <div>
-            <ion-button
-              expand="full"
-              type="submit"
-              >Registrarse</ion-button
-            >
+
+            <ion-button [routerLink]="['/register']">Registrarse</ion-button>
+            
           </div>
         </form>
       </ion-card-content>
