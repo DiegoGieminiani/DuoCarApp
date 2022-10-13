@@ -18,19 +18,37 @@ const routes: Routes = [
     loadChildren: () => import('./switch-user/switch-user.module').then( m => m.SwitchUserPageModule)
   },
   {
+    // dos puntos es un parametro
     path: 'login/:userType', // para pasar un parametro por path se usa :parametro
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: '**',
-    loadChildren: () => import('./page-not-found/page-not-found.module').then( m => m.PageNotFoundPageModule)
+    path: 'register/:userType',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },  {
     path: 'register-car',
     loadChildren: () => import('./register-car/register-car.module').then( m => m.RegisterCarPageModule)
+  },
+  {
+    path: 'home-conductor',
+    loadChildren: () => import('./home-conductor/home-conductor.module').then( m => m.HomeConductorPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'trip-view',
+    loadChildren: () => import('./trip-view/trip-view.module').then( m => m.TripViewPageModule)
+  },
+  {
+    path: 'trip-history',
+    loadChildren: () => import('./trip-history/trip-history.module').then( m => m.TripHistoryPageModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./page-not-found/page-not-found.module').then( m => m.PageNotFoundPageModule)
   },
 
 

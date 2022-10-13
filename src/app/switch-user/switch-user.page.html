@@ -1,14 +1,18 @@
-<ion-header [translucent]="true"></ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> DuoCarApp </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<img src="./assets/coche.png" width="50" height="50">
-<ion-content color="warning" [fullscreen]="true" class="content"> 
+<img alt='' src="./assets/coche.png" width="50" height="50">
+<ion-content color="warning" [fullscreen]="true" class="content">
   <ion-header collapse="condense">
     <ion-toolbar color="warning">
       <ion-title class="app_title" size="large">DuoCarApp</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div class="center" color="warning" >
+  <div class="center" color="warning">
     <ion-card-title color="light">Elige un tipo de usuario</ion-card-title>
     <ion-card-content>
       <ion-button color="light" shape="round" size="large" (click)="goToLogin('pasajero')">
