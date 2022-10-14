@@ -31,7 +31,7 @@ export class RegisterPage implements OnInit {
         this.registerFail();
       }
     } else {
-      if (this.usuario) {
+      if (true) {
         this.router.navigate(['/register-car']);
       } else {
         this.registerFail();

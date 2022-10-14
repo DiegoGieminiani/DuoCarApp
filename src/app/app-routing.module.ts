@@ -1,11 +1,24 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes, } from '@angular/router';
+import { RegisterCarPageModule } from './register-car/register-car.module';
 import { AuthGuardService } from './service/auth-guard.service';
+import { RegisterPage } from '../app/register/register.page';
+import { RegisterCarPage } from './register-car/register-car.page';
+import { HomeConductorPage } from './home-conductor/home-conductor.page';
+import { ProfilePage } from './profile/profile.page';
+import { TripViewPageModule } from './trip-view/trip-view.module';
+import { TripHistoryPage } from './trip-history/trip-history.page';
+import { HomePage } from './home/home.page';
+import { LoginPage } from './login/login.page';
+import { SwitchUserPage } from './switch-user/switch-user.page';
+import { PageNotFoundPage } from './page-not-found/page-not-found.page';
+
 
 const routes: Routes = [
   {
     path: 'home/:userName',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    component: HomePage
     //canActivate: [AuthGuardService]
   },
   {
@@ -15,43 +28,41 @@ const routes: Routes = [
   },
   {
     path: 'switch-user',
-    loadChildren: () => import('./switch-user/switch-user.module').then( m => m.SwitchUserPageModule)
+    component: SwitchUserPage
   },
   {
     // dos puntos es un parametro
     path: 'login/:userType', // para pasar un parametro por path se usa :parametro
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    component: LoginPage
   },
   {
     path: 'register/:userType',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    component: RegisterPage
   },
   {
     path: 'register-car',
-    loadChildren: () => import('./register-car/register-car.module').then( m => m.RegisterCarPageModule)
+    component: RegisterCarPage
   },
   {
-    path: 'home-conductor',
-    loadChildren: () => import('./home-conductor/home-conductor.module').then( m => m.HomeConductorPageModule)
+    path: 'home-conductor/:userType',
+    component: HomeConductorPage
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    component: ProfilePage
   },
   {
     path: 'trip-view',
-    loadChildren: () => import('./trip-view/trip-view.module').then( m => m.TripViewPageModule)
+    component: TripViewPageModule
   },
   {
     path: 'trip-history',
-    loadChildren: () => import('./trip-history/trip-history.module').then( m => m.TripHistoryPageModule)
+    component: TripHistoryPage
   },
   {
     path: '**',
-    loadChildren: () => import('./page-not-found/page-not-found.module').then( m => m.PageNotFoundPageModule)
+    component: PageNotFoundPage
   },
-
-
 ];
 
 @NgModule({
