@@ -8,18 +8,14 @@ import { HomeConductorPage } from './home-conductor/home-conductor.page';
 import { ProfilePage } from './profile/profile.page';
 import { TripViewPageModule } from './trip-view/trip-view.module';
 import { TripHistoryPage } from './trip-history/trip-history.page';
-import { HomePage } from './home/home.page';
-import { LoginPage } from './login/login.page';
-import { SwitchUserPage } from './switch-user/switch-user.page';
-import { PageNotFoundPage } from './page-not-found/page-not-found.page';
 
 
 const routes: Routes = [
   {
     path: 'home/:userName',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    component: HomePage
     //canActivate: [AuthGuardService]
+
   },
   {
     path: '',
@@ -28,12 +24,12 @@ const routes: Routes = [
   },
   {
     path: 'switch-user',
-    component: SwitchUserPage
+    loadChildren: () => import('./switch-user/switch-user.module').then( m => m.SwitchUserPageModule)
   },
   {
     // dos puntos es un parametro
     path: 'login/:userType', // para pasar un parametro por path se usa :parametro
-    component: LoginPage
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register/:userType',
@@ -61,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundPage
+    loadChildren: () => import('./page-not-found/page-not-found.module').then( m => m.PageNotFoundPageModule)
   },
 ];
 

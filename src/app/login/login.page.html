@@ -21,26 +21,15 @@
         <form [formGroup]="usuario">
           <div>
             <ion-list class="bg-transparent">
-              <ion-item color="none" lines="top">     
+              <ion-item color="none" lines="top">
                 <ion-label position="floating">User</ion-label>
                 <ion-input type="text" formControlName="user" placeholder="Enter User"></ion-input>
-              </ion-item> 
+              </ion-item>
               <ion-item color="none" lines="top">
                 <ion-label position="floating">Password</ion-label>
                 <ion-input type="password" formControlName="pass" placeholder="Enter Pass"></ion-input>
               </ion-item>
             </ion-list>
-          </div>
-
-          <div>
-
-            <ion-button expand="full" type="submit"(click)="toHome()">Iniciar sesión</ion-button>
-
-          </div>
-          <div>
-
-            <ion-button expand="full" (click)="toRegister()">Registrarse</ion-button>
-
           </div>
           <br />
           <div>
@@ -50,7 +39,7 @@
               size="default"
               expand="full"
               type="submit"
-              (click)="goToPagina2()"
+              (click)="toHome()"
               >Iniciar sesión
             </ion-button>
           </div>
@@ -61,7 +50,7 @@
               size="default"
               expand="full"
               type="submit"
-              [routerLink]="['/register']"
+              (click)="toRegister()"
               >Registrarse
             </ion-button>
           </div>

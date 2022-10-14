@@ -32,13 +32,13 @@ export class LoginPage implements OnInit {
   toHome() {
     console.log('entramos al metodo');
     if (this.loginType === 'conductor') {
-      if ('scrumMaster' === this.usuario.value.user) {
+      if ('asdf' === this.usuario.value.user) {
         this.sendDetailsWithState('-conductor');
       } else {
         this.presentAlert();
       }
     }else{
-      if ('scrumMaster' === this.usuario.value.user) {
+      if ('asdf' === this.usuario.value.user) {
         this.sendDetailsWithState('');
       } else {
         this.presentAlert();
@@ -73,6 +73,4 @@ export class LoginPage implements OnInit {
       .fromTo('opacity', '0.2', '1');
     animacion.play();
   }
-
-
 }
