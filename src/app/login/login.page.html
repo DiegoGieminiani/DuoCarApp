@@ -1,18 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Login </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content color="warning" [fullscreen]="true" class="content">
+  <ion-header [translucent]="true">
     <ion-toolbar>
+      <ion-title size="large"> Login </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-header collapse="condense">
+    <ion-toolbar color="warning">
       <ion-title size="large">Login</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <ion-card id="loginCard">
+  <div id="container" color="warning">
+    <ion-card id="loginCard" color="warning">
       <ion-card-header>
         <ion-card-title>Bienvenid@ {{loginType}}</ion-card-title>
       </ion-card-header>
@@ -20,14 +20,16 @@
       <ion-card-content>
         <form [formGroup]="usuario">
           <div>
-            <ion-item>
-              <ion-label position="floating">Enter User</ion-label>
-              <ion-input type="text" formControlName="user"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Enter Pass</ion-label>
-              <ion-input type="password" formControlName="pass"></ion-input>
-            </ion-item>
+            <ion-list class="bg-transparent">
+              <ion-item color="none" lines="top">     
+                <ion-label position="floating">User</ion-label>
+                <ion-input type="text" formControlName="user" placeholder="Enter User"></ion-input>
+              </ion-item> 
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Password</ion-label>
+                <ion-input type="password" formControlName="pass" placeholder="Enter Pass"></ion-input>
+              </ion-item>
+            </ion-list>
           </div>
 
           <div>
@@ -39,6 +41,29 @@
 
             <ion-button expand="full" (click)="toRegister()">Registrarse</ion-button>
 
+          </div>
+          <br />
+          <div>
+            <ion-button
+              color="dark"
+              shape="round"
+              size="default"
+              expand="full"
+              type="submit"
+              (click)="goToPagina2()"
+              >Iniciar sesión
+            </ion-button>
+          </div>
+          <div>
+            <ion-button
+              color="dark"
+              shape="round"
+              size="default"
+              expand="full"
+              type="submit"
+              [routerLink]="['/register']"
+              >Registrarse
+            </ion-button>
           </div>
         </form>
       </ion-card-content>
