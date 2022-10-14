@@ -13,11 +13,11 @@
   <div id="container">
     <ion-card id="loginCard">
       <ion-card-header>
-        <ion-card-title>Bienvenid@ {{loginType}}</ion-card-title>
+        <ion-card-title>Bienvenid@</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
-        <form [formGroup]="usuario">
+        <form>
           <div>
             <ion-item>
               <ion-label position="floating">Nombre</ion-label>
@@ -32,20 +32,16 @@
               <ion-input type="text" formControlName="user"></ion-input>
             </ion-item>
             <ion-item>
+              <ion-label position="floating">Telefono</ion-label>
+              <ion-input type="text" formControlName="user"></ion-input>
+            </ion-item>
+            <ion-item>
               <ion-label position="floating">Contraseña</ion-label>
               <ion-input type="password" formControlName="pass"></ion-input>
             </ion-item>
           </div>
-
           <div>
-
-            <ion-button expand="full" type="submit"(click)="goToPagina2()">Iniciar sesión</ion-button>
-
-          </div>
-          <div>
-
-            <ion-button expand="full" [routerLink]="['/register']">Registrarse</ion-button>
-            
+            <ion-button expand="full" (click) ="validateRegister()">Registrarse</ion-button>  
           </div>
         </form>
       </ion-card-content>
