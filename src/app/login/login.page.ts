@@ -66,5 +66,4 @@ export class LoginPage implements OnInit {
     animacion.play();
   }
 
-
 }
