@@ -21,20 +21,28 @@ export class LoginPage implements OnInit {
     this.animacionUno();
   }
 
-  sendDetailsWithState() {
+  sendDetailsWithState(userType: string) {
     const navigationExtras: NavigationExtras = {
       state: { user: this.usuario.value.user }
     };
-    this.router.navigate([`/home/${navigationExtras.state.user}`], navigationExtras); // Esta linea es la que me permite navegar a otro page
+    this.router.navigate([`/home${userType}/${navigationExtras.state.user}`], navigationExtras); // Esta linea es la que me permite navegar a otro page
   }
 
   //Metodo para navegar desde un metodo llamado desde el html
-  goToPagina2() {
+  toHome() {
     console.log('entramos al metodo');
-    if ('scrumMaster' === this.usuario.value.user) {
-      this.sendDetailsWithState();
-    } else {
-      this.presentAlert();
+    if (this.loginType === 'conductor') {
+      if ('asdf' === this.usuario.value.user) {
+        this.sendDetailsWithState('-conductor');
+      } else {
+        this.presentAlert();
+      }
+    }else{
+      if ('asdf' === this.usuario.value.user) {
+        this.sendDetailsWithState('');
+      } else {
+        this.presentAlert();
+      }
     }
 
 
@@ -65,5 +73,8 @@ export class LoginPage implements OnInit {
       .fromTo('opacity', '0.2', '1');
     animacion.play();
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4bcdf082b315d0849b133f517311e208fbfedf11
 }
