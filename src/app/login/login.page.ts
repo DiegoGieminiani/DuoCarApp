@@ -73,8 +73,4 @@ export class LoginPage implements OnInit {
       .fromTo('opacity', '0.2', '1');
     animacion.play();
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 4bcdf082b315d0849b133f517311e208fbfedf11
 }
