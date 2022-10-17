@@ -14,8 +14,7 @@ const routes: Routes = [
   {
     path: 'home/:userName',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    //canActivate: [AuthGuardService]
-
+    canActivate: [AuthGuardService]
   },
   {
     path: '',
@@ -41,19 +40,23 @@ const routes: Routes = [
   },
   {
     path: 'home-conductor/:userType',
-    component: HomeConductorPage
+    component: HomeConductorPage,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'profile',
-    component: ProfilePage
+    component: ProfilePage,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'trip-view',
-    component: TripViewPageModule
+    component: TripViewPageModule,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'trip-history',
-    component: TripHistoryPage
+    component: TripHistoryPage,
+    canActivate: [AuthGuardService]
   },
   {
     path: '**',

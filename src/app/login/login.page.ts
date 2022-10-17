@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertController, createAnimation } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
+import { AuthenticationService } from '../service/authentication.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +13,16 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class LoginPage implements OnInit {
   loginType = this.route.snapshot.paramMap.get('userType');
+  value = "asdf";
+  token = "123456";
   usuario = new FormGroup({
     user: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]),
     pass: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
   });
 
-  constructor(private route: ActivatedRoute, private router: Router, private alertController: AlertController) { }
+  constructor(private storage: Storage, private authService: AuthenticationService, private route: ActivatedRoute, private router: Router, private alertController: AlertController) {
+    this.storage.set('token',this.token);
+  }
   ngOnInit() {
     this.animacionUno();
   }
@@ -52,6 +58,15 @@ export class LoginPage implements OnInit {
 
   toRegister() {
       this.router.navigate([`/register/${this.loginType}`]);
+  }
+
+  loginUser() {
+    if ((this.usuario.value.user.trim()!="") && ((this.usuario.value.pass.trim()!=""))){
+      this.authService.login(this.usuario.value.user, this.usuario.value.pass);
+      //console.log(isAuth)
+      //toHome()
+
+    }
   }
 
   //Metodo de alerta
