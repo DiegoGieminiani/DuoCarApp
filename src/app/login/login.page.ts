@@ -25,7 +25,8 @@ export class LoginPage implements OnInit {
     const navigationExtras: NavigationExtras = {
       state: { user: this.usuario.value.user }
     };
-    this.router.navigate([`/home${userType}/${navigationExtras.state.user}`], navigationExtras); // Esta linea es la que me permite navegar a otro page
+    // eslint-disable-next-line max-len
+    this.router.navigate([`/home${userType}/${navigationExtras.state.user}`], navigationExtras);
   }
 
   //Metodo para navegar desde un metodo llamado desde el html
@@ -73,8 +74,4 @@ export class LoginPage implements OnInit {
       .fromTo('opacity', '0.2', '1');
     animacion.play();
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 4bcdf082b315d0849b133f517311e208fbfedf11
 }
