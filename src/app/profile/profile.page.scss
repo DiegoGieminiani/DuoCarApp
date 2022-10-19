@@ -6,6 +6,9 @@
     margin: 0;
 }
 
-.inner-scroll{
-    padding-bottom: 0 !important; 
+.content{
+    position: relative;
+}
+.bg-transparent{
+    background: transparent;
 }

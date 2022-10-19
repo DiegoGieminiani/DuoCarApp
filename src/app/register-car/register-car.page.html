@@ -1,47 +1,47 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Registro auto</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content color="warning" [fullscreen]="true" class="content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Registro auto</ion-title>
+      <ion-title>Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-header collapse="condense">
+    <ion-toolbar color="warning">
+      <ion-title size="large">Registro</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <ion-card id="loginCard">
-      <ion-card-header>
-        <ion-card-title>Bienvenid@</ion-card-title>
-      </ion-card-header>
-
+  <div id="container" color="warning">
+    <ion-card id="registercarCard" color="warning">
       <ion-card-content>
         <form>
           <div>
-            <ion-item>
-              <ion-label position="floating">Marca</ion-label>
-              <ion-input type="text" formControlName="marca"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Modelo</ion-label>
-              <ion-input type="text" formControlName="modelo"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Patente</ion-label>
-              <ion-input type="text" formControlName="patente"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Color</ion-label>
-              <ion-input type="text" formControlName="color"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Año</ion-label>
-              <ion-input type="text" formControlName="anio"></ion-input>
-            </ion-item>
+            <ion-list class="bg-transparent">
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Marca</ion-label>
+                <ion-input type="text" formControlName="marca"></ion-input>
+              </ion-item>
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Modelo</ion-label>
+                <ion-input type="text" formControlName="modelo"></ion-input>
+              </ion-item>
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Patente</ion-label>
+                <ion-input type="text" formControlName="patente"></ion-input>
+              </ion-item>
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Color</ion-label>
+                <ion-input type="text" formControlName="color"></ion-input>
+              </ion-item>
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Año</ion-label>
+                <ion-input type="text" formControlName="anio"></ion-input>
+              </ion-item>
+            </ion-list>
           </div>
+          <br />
           <div>
-            <ion-button expand="full" (click)="validateRegister()">Registrar vehículo</ion-button>
+            <ion-button color="dark" expand="full" shape="round" size="default" type="submit"
+              (click)="validateRegister()">Registrar</ion-button>
           </div>
         </form>
       </ion-card-content>
