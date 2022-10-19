@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Perfíl</ion-title>
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large">Perfíl</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-list>
@@ -42,7 +42,7 @@
       <ion-input [clearInput]="true" placeholder="Ingrese modelo vehículo" value="CRV"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Patene</ion-label>
+      <ion-label position="stacked">Patente</ion-label>
       <ion-input [clearInput]="true" placeholder="Ingrese patente vehículo" value="55555h"></ion-input>
     </ion-item>
     <ion-item>
@@ -51,3 +51,25 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+<ion-footer class="footer">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="toHome()" tab="Home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="toTripHistory()">
+        <ion-icon name="location"></ion-icon>
+        <ion-label>Historial</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="toProfile()">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-footer>
+
