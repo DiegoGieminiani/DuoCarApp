@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
-import * as Mapboxgl from 'mapbox-gl';
+
 
 
 @Component({
@@ -16,20 +16,11 @@ export class HomePage implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private router: Router) {}
-
-  mapa : Mapboxgl.Map;
-
-  ngOnInit() {
-
-    Mapboxgl.accessToken = environment.mapboxKey;
-    this.mapa = new Mapboxgl.Map({
-      container: 'mapa-mapbox', // container ID
-      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-      style: 'mapbox://styles/mapbox/streets-v11', // style URL
-      center: [-70.6486531,-33.4414087], // starting position Longitud Latitud
-      zoom: 11.25 // starting zoom
-    });
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
+
+
 
   toProfile() {
     this.router.navigate([`/profile`]);

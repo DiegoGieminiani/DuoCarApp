@@ -47,7 +47,7 @@ export class RegisterPage implements OnInit {
         text: 'Aceptar',
         role: 'aceptar',
         handler: () => {
-          this.router.navigate([`/switch-user`]);
+        this.router.navigate(['/switch-user']);
         }
       }]
     });
@@ -57,7 +57,7 @@ export class RegisterPage implements OnInit {
   async registerFail() {
     const alert = await this.alertController.create({
       header: 'Error al registrar',
-      subHeader: 'Usuario : ',
+      subHeader: 'Usuario: ',
       message: 'no registrado',
       buttons: [{
         text: 'Aceptar',
