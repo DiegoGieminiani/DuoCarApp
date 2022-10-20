@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
-
-import * as Mapboxgl from 'mapbox-gl';
-
+import { MapboxService } from '../mapbox.service';
 
 @Component({
   selector: 'app-home',
@@ -12,24 +9,28 @@ import * as Mapboxgl from 'mapbox-gl';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  @ViewChild('asGeoCoder') asGeoCoder: ElementRef;
   username = this.route.snapshot.paramMap.get('userName');
 
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private mapboxService: MapboxService, private renderer2: Renderer2) {}
 
-  mapa : Mapboxgl.Map;
-
-  ngOnInit() {
-
-    Mapboxgl.accessToken = environment.mapboxKey;
-    this.mapa = new Mapboxgl.Map({
-      container: 'mapa-mapbox', // container ID
-      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-      style: 'mapbox://styles/mapbox/streets-v11', // style URL
-      center: [-70.6486531,-33.4414087], // starting position Longitud Latitud
-      zoom: 11.25 // starting zoom
-    });
+  ngOnInit(): void{
+    this.mapboxService.buildMap()
+      .then(({map ,geocoder}) =>{
+        //this.asGeoCoder
+        this.renderer2.appendChild(this.asGeoCoder.nativeElement,
+          geocoder.onAdd(map)
+          )
+        console.log('***********TODO BIEN***********');
+      })
+      .catch(err => {
+        console.log('********ERROR****************',err);
+      })
   }
+
+
+
 
   toProfile() {
     this.router.navigate([`/profile`]);
@@ -44,3 +45,8 @@ export class HomePage implements OnInit {
   }
 
 }
+/* map.addControl(
+  new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: mapboxgl
+  }) */
