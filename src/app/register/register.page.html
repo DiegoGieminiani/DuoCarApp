@@ -1,47 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Registro</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content color="warning" [fullscreen]="true" class="content">
+  <ion-header>
     <ion-toolbar>
+      <ion-title>Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-header collapse="condense">
+    <ion-toolbar color="warning">
       <ion-title size="large">Registro</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <ion-card id="loginCard">
-      <ion-card-header>
-        <ion-card-title>Bienvenid@</ion-card-title>
-      </ion-card-header>
-
+  <div id="container" color="warning">
+    <ion-card id="registerCard" color="warning">
       <ion-card-content>
         <form>
           <div>
-            <ion-item>
-              <ion-label position="floating">Nombre</ion-label>
-              <ion-input type="text" formControlName="nombre"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Apellido</ion-label>
-              <ion-input type="text" formControlName="apellido"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Correo</ion-label>
-              <ion-input type="text" formControlName="correo"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Telefono</ion-label>
-              <ion-input type="text" formControlName="telefono"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Contraseña</ion-label>
-              <ion-input type="password" formControlName="contrasena"></ion-input>
-            </ion-item>
+            <ion-list class= "bg-transparent">
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input type="text" formControlName="nombre"></ion-input>
+              </ion-item>
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Apellido</ion-label>
+                <ion-input type="text" formControlName="apellido"></ion-input>
+              </ion-item>
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Correo</ion-label>
+                <ion-input type="text" formControlName="correo"></ion-input>
+              </ion-item>
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Telefono</ion-label>
+                <ion-input type="text" formControlName="telefono"></ion-input>
+              </ion-item>
+              <ion-item color="none" lines="top">
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input type="password" formControlName="contrasena"></ion-input>
+              </ion-item>
+            </ion-list>
           </div>
+          <br />
           <div>
-            <ion-button expand="full" (click) ="validateRegister()">Registrarse</ion-button>
+            <ion-button
+              color="dark"
+              expand="full"
+              shape="round"
+              size="default"
+              (click)="validateRegister()">Registrarse</ion-button>
           </div>
         </form>
       </ion-card-content>

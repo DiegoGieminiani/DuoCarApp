@@ -31,7 +31,6 @@ export class HomePage implements OnInit {
 
 
 
-
   toProfile() {
     this.router.navigate([`/profile`]);
   }

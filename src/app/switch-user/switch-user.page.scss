@@ -1,8 +1,20 @@
 .center{
     text-align: center !important;
-    position: absolute;
-    top: 40%;
+    position: relative;
+    top: 20%;
 }
 .content{
-    position: relative;
+    position: center !important;
+    height: 100%; 
+    display: flex; 
+    align-items: center !important; 
+    justify-content: center !important;
+}
+
+.app_tittle{
+    text-align: center !important;
+
+}
+.sub_tittle{
+    font-weight: bold !important;
 }
