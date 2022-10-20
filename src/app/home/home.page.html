@@ -35,5 +35,11 @@
     <p>{{username}}</p>
   </div>
 
-  <div id="mapa-mapbox"> </div>
-</ion-content>
+
+</ion-content> //
+
+
+<app-loading ngIf="!isUserLocationReady"; else mapReady  ></app-loading>
+<ng-template #mapReady>
+  <app-map-view> </app-map-view>
+</ng-template>

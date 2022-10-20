@@ -1,0 +1,12 @@
+
+
+
+
+<app-loading ngIf="!isUserLocationReady"; else mapReady  ></app-loading>
+
+
+
+<ng-template #mapReady>
+
+    <app-map-screen> </app-map-screen>
+</ng-template>
