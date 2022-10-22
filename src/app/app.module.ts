@@ -9,9 +9,10 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TripHistoryPage } from './trip-history/trip-history.page';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TripHistoryPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot()],
   providers: [AuthenticationService, AuthGuardService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
