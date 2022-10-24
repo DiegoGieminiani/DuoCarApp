@@ -19,9 +19,9 @@ export class HomePage implements OnInit {
     this.mapboxService.buildMap()
       .then(({map ,geocoder}) =>{
         //this.asGeoCoder
-        this.renderer2.appendChild(this.asGeoCoder.nativeElement,
-          geocoder.onAdd(map)
-          )
+
+        document.getElementById('geocoder').appendChild(geocoder.onAdd(map));//Agrego el buscador de GeoCoder a Un input fuera del mapa
+
         console.log('***********TODO BIEN***********');
       })
       .catch(err => {

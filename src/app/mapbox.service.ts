@@ -27,6 +27,9 @@ export class MapboxService {
           zoom: this.zoom,
           center: [this.lng, this.lat],
         });
+        const marker1 = new mapboxgl.Marker()
+        .setLngLat([-33.43253904595325,-70.61587143826715 ])
+        .addTo(this.map);
         this.map.addControl(
           new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
