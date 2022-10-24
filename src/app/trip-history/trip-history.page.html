@@ -5,14 +5,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let trip of tripsFormat">
+  <ion-card *ngFor="let trip of trips">
     <ion-card-header>
       <ion-card-title>Origen: {{trip.origen}}</ion-card-title>
       <ion-card-title>Destino: {{trip.destino}}</ion-card-title>
       <ion-card-subtitle>Monto: {{trip.monto}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      Hora: {{trip.horaSalida}}
+      Fecha: {{trip.horaSalida}}
     </ion-card-content>
   </ion-card>
 </ion-content>

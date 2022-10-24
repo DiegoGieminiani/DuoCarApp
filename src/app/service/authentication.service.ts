@@ -49,14 +49,14 @@ export class AuthenticationService {
         }
       };
       this.storage.set('USER_INFO', navigationExtrasNOK).then((response) => {
-        this.router.navigate(['mipaginados'], navigationExtras);
+        this.router.navigate(['/switch-user']);
         this.authState.next(false);
       });
     }
   }
   logout() {
     this.storage.remove('USER_INFO').then(() => {
-      this.router.navigate(['mipaginados']);
+      this.router.navigate(['/switch-user']);
       this.authState.next(false);
     });
   }

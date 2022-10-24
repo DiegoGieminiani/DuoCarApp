@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import axios from 'axios';
 
 @Component({
   selector: 'app-trip-history',
@@ -6,45 +7,47 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trip-history.page.scss'],
 })
 export class TripHistoryPage implements OnInit {
-  trips: any[] = [
-    {
-      id: 1,
-      conductorRut: '29770279',
-      destino: 'bar de toby',
-      horaLlegada: '1665975616560',
-      horaSalida: '1665975272561',
-      monto: 55555,
-      origen: 'mi casa 6969',
-    },
-    {
-      id: 2,
-      conductorRut: '29770234',
-      destino: 'duocuc',
-      horaLlegada: '1665975616560',
-      horaSalida: '1665975272561',
-      monto: 55555,
-      origen: 'frankfort 5071',
-    },
-    {
-      id: 3,
-      conductorRut: '123143234',
-      destino: 'frankfort 5072',
-      horaLlegada: '1665975616560',
-      horaSalida: '1665975272561',
-      monto: 55555,
-      origen: 'francisco bilbao 4260',
-    },
-  ];
-  tripsFormat = this.trips.map((trip) => {
-    const horaSalidaTemporal = new Date(parseInt(trip.horaSalida));
-    const horaLlegadaTemporal = new Date(parseInt(trip.horaLlegada));
 
-    trip.horaSalida = horaSalidaTemporal.getDate()
-    trip.horaLlegada = horaLlegadaTemporal.getDate()
+  trips
 
-    return trip;
-  });
   constructor() {}
+  async ngOnInit() {
+    const headers = {
+      'Content-Type': 'text/plain',
+      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+      "Access-Control-Allow-Headers": "x-access-token, Origin, X-Requested-With, Content-Type, Accept"
 
-  ngOnInit() {}
+    };
+    const realTrips: any = await axios
+      .post(
+        'https://xmdsydoicb.execute-api.us-east-1.amazonaws.com/estudiante',
+        {
+          rut: '2666666',
+        }, {headers}
+        )
+        .then(function (response) {
+        console.log('axios ok', response);
+        return response;
+      })
+      .catch(function (error) {
+        console.log('axios oknt', error);
+        return error;
+      });
+    console.log('axios ', realTrips);
+
+    const tripsFormat = async () => {
+      this.trips = await realTrips.data.Item.viajesRealizadosPasajero.map((trip) => {
+        console.log(trip)
+        const horaSalidaTemporal = new Date(parseInt(trip.horaSalida)).toLocaleDateString("en-US");
+        const horaLlegadaTemporal = new Date(parseInt(trip.horaLlegada));
+
+        trip.horaSalida = horaSalidaTemporal;
+        trip.horaLlegada = horaLlegadaTemporal;
+
+        return trip;
+      });
+    }
+    await tripsFormat()
+  }
 }
