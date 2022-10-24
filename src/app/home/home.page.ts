@@ -1,33 +1,61 @@
-import { Component, OnInit, ViewChild,ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { MapboxService } from '../mapbox.service';
+
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, AfterViewInit {
+
   @ViewChild('asGeoCoder') asGeoCoder: ElementRef;
   username = this.route.snapshot.paramMap.get('userName');
 
+  locationNow: any;
 
-  constructor(private route: ActivatedRoute, private router: Router, private mapboxService: MapboxService, private renderer2: Renderer2) {}
+  constructor(private route: ActivatedRoute, private router: Router, private mapboxService: MapboxService, private renderer2: Renderer2,
+    private geolocation: Geolocation) { }
 
-  ngOnInit(): void{
-    this.mapboxService.buildMap()
-      .then(({map ,geocoder}) =>{
+
+
+  ngOnInit(): void {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.locationNow = resp;
+      console.log('resp', this.locationNow);
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+
+    const watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      console.log(data);
+    });
+
+
+  }
+
+  ngAfterViewInit(): void {
+
+    this.mapboxService.buildMap(this.locationNow)
+      .then(({ map, geocoder }) => {
         //this.asGeoCoder
-
-        document.getElementById('geocoder').appendChild(geocoder.onAdd(map));//Agrego el buscador de GeoCoder a Un input fuera del mapa
-
-        console.log('***********TODO BIEN***********');
+        this.renderer2.appendChild(this.asGeoCoder.nativeElement,
+          geocoder.onAdd(map)
+        );
+        console.log('*****TODO BIEN*****');
       })
       .catch(err => {
-        console.log('********ERROR****************',err);
-      })
+        console.log('*****ERROR******', err);
+
+
+      });
   }
+
+
 
 
 
@@ -42,6 +70,10 @@ export class HomePage implements OnInit {
   toHome() {
     this.router.navigate([`/home/${this.username}`]);
   }
+
+
+
+
 
 }
 /* map.addControl(
