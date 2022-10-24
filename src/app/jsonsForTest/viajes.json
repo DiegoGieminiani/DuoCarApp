@@ -1,0 +1,26 @@
+[
+  {
+    "origen": "casa diego",
+    "destino": "duoc a varas",
+    "monto": 55555,
+    "pasajeroRut": "29770279"
+  },
+  {
+      "origen": "duoc a varas",
+    "destino": "casa dido",
+    "monto": 55555,
+    "pasajeroRut": "29770259"
+  },
+  {
+    "origen": "club de tobby",
+    "destino": "micasa",
+    "monto": 55555,
+    "pasajeroRut": "29754379"
+  },
+  {
+    "origen": "panamera center",
+    "destino": "Antonio varas 666",
+    "monto": 55555,
+    "pasajeroRut": "29770276"
+  }
+]
