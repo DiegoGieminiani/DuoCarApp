@@ -1,3 +1,10 @@
+
+<head>
+  <link
+    href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css"
+    rel="stylesheet"
+  />
+</head>
 <ion-content [fullscreen]="true">
   <ion-tabs>
     <ion-tab-bar slot="bottom">
@@ -6,7 +13,7 @@
         <ion-label>Home</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button (click)="toTripView()">
+      <ion-tab-button (click)="toTripHistory()">
         <ion-icon name="location"></ion-icon>
         <ion-label>Hisorial</ion-label>
       </ion-tab-button>
@@ -17,16 +24,5 @@
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
-<!--Se muestran los viajes disponibles para tomar-->
-  <ion-card *ngFor="let trip of tripsFormat">
-    <ion-card-header>
-      <ion-card-title>Origen: {{trip.origen}}</ion-card-title>
-      <ion-card-title>Destino: {{trip.destino}}</ion-card-title>
-      <ion-card-subtitle>Monto: {{trip.monto}}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      Hora: {{trip.horaSalida}}
-    </ion-card-content>
-  </ion-card>
 
 </ion-content>

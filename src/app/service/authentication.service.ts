@@ -26,26 +26,17 @@ export class AuthenticationService {
       }
     });
   }
-  login(user, password, userType) {
+  login(user, password) {
     if (user == "asdf"){
       var navigationExtras: NavigationExtras = {
         state: {
           user_id: '1234',
           user: 'Nicolas Díaz',
-          message: 'Bienvenido',
-          userType: userType
+          message: 'Bienvenido'
         }
       };
       this.storage.set('USER_INFO', navigationExtras).then((response) => {
-        if(userType === 'pasajero'){
-          this.router.navigate([`/home/${navigationExtras.state.user}`]);
-        }
-        else{
-          if(userType === 'conductor'){
-            this.router.navigate([`home-conductor/:userType`]);
-          }
-        }
-          
+        this.router.navigate([`/home/${navigationExtras.state.user}`]);
 
         this.authState.next(true);
       });

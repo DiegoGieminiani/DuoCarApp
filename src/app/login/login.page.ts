@@ -55,14 +55,14 @@ export class LoginPage implements OnInit {
 
     // this.navCtrl.navigateForward('/home');
   }
-  //Boton que manda al registro
+
   toRegister() {
       this.router.navigate([`/register/${this.loginType}`]);
   }
-  //Boton que manda al home
+
   loginUser() {
     if ((this.usuario.value.user.trim()!="") && ((this.usuario.value.pass.trim()!=""))){
-      this.authService.login(this.usuario.value.user, this.usuario.value.pass,this.loginType);
+      this.authService.login(this.usuario.value.user, this.usuario.value.pass);
       //console.log(isAuth)
       //toHome()
 
@@ -79,7 +79,6 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }
-
   //Animación
   animacionUno() {
     const animacion = createAnimation()
