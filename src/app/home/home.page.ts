@@ -15,56 +15,61 @@ export class HomePage implements OnInit, AfterViewInit {
   @ViewChild('asGeoCoder') asGeoCoder: ElementRef;
   username = this.route.snapshot.paramMap.get('userName');
 
+  locationNow: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private mapboxService: MapboxService, private renderer2: Renderer2,
     private geolocation: Geolocation) { }
 
 
+
   ngOnInit(): void {
-    this.mapboxService.buildMap()
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.locationNow = resp;
+      console.log('resp', this.locationNow);
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+
+    const watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      console.log(data);
+    });
+
+
+  }
+
+  ngAfterViewInit(): void {
+
+    this.mapboxService.buildMap(this.locationNow)
       .then(({ map, geocoder }) => {
         //this.asGeoCoder
         this.renderer2.appendChild(this.asGeoCoder.nativeElement,
           geocoder.onAdd(map)
         );
-        console.log('***********TODO BIEN***********');
+        console.log('*****TODO BIEN*****');
       })
       .catch(err => {
-        console.log('********ERROR****************', err);
+        console.log('*****ERROR******', err);
+
+
       });
-
-      this.geolocation.getCurrentPosition().then((resp) => {
-        console.log(resp);
-      }).catch((error) => {
-        console.log('Error getting location', error);
-      });
-
-    const watch = this.geolocation.watchPosition();
-    watch.subscribe((data) => {
-      console.log(data);
-
-    });
-  }
-
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
   }
 
 
 
 
 
-toProfile() {
-  this.router.navigate([`/profile`]);
-}
+  toProfile() {
+    this.router.navigate([`/profile`]);
+  }
 
-toTripHistory() {
-  this.router.navigate([`/trip-history`]);
-}
+  toTripHistory() {
+    this.router.navigate([`/trip-history`]);
+  }
 
-toHome() {
-  this.router.navigate([`/home/${this.username}`]);
-}
+  toHome() {
+    this.router.navigate([`/home/${this.username}`]);
+  }
 
 
 

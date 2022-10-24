@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import { loadingController } from '@ionic/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,25 +13,25 @@ export class MapboxService {
   lat = -33.43253904595325;
   lng = -70.61587143826715;
   zoom = 10;
+
   constructor() {
     this.mapbox.accessToken = environment.mapPk;
   }
 
-  buildMap = (): Promise<any> => {
-    return new Promise((resolve, rejects) => {
+  buildMap = (locationNow: any):  Promise<any> => new Promise((resolve, rejects) => {
+      console.log('mapawawawawa',locationNow);
       try {
         this.map = new mapboxgl.Map({
           container: 'map',
           style: this.style,
           zoom: this.zoom,
-          center: [this.lng, this.lat],
+          center: [locationNow.coords.lng, locationNow.coords.lat],
         });
         this.map.addControl(
           new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl,
+            mapboxgl,
           }),
-          
         );
 
         const geocoder = new MapboxGeocoder({
@@ -49,5 +48,4 @@ export class MapboxService {
         rejects(e);
       }
     });
-  };
 }
