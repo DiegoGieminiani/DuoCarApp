@@ -1,0 +1,75 @@
+[
+  {
+      "rut": 26601453,
+      "dv": "k",
+      "nombre": "jose",
+      "apellido": "diaz",
+      "correo": "x@xx.x",
+      "telefono": 6584765789,
+      "contraseña": "xxxxxxx",
+      "viajesRealizadosPasajero":[
+          {
+              "origen": "cxxxx",
+              "destino": "adsfdfa",
+              "monto": 55555,
+              "conductorRut": "29770279",
+              "patente": "XXDDSS",
+              "horaSalida": "timestampxxx",
+              "horaLlegada": "timestampyyy"
+          },
+          {
+              "origen": "cxxxx",
+              "destino": "adsfdfa",
+              "monto": 55555,
+              "conductorRut": "29770279",
+              "patente": "XXDDSS",
+              "horaSalida": "timestampxxx",
+              "horaLlegada": "timestampyyy"
+          }
+      ]
+  },
+  {
+      "rut": 26601453,
+      "dv": "k",
+      "nombre": "jose",
+      "apellido": "diaz",
+      "correo": "x@xx.x",
+      "telefono": 6584765789,
+      "contraseña": "xxxxxxx",
+      "viajesRealizadosPasajero":[
+          {
+              "origen": "cxxxx",
+              "destino": "adsfdfa",
+              "monto": 55555,
+              "conductorRut": "29770279",
+              "horaSalida": "timestampxxx",
+              "horaLlegada": "timestampyyy"
+          },
+          {
+              "origen": "cxxxx",
+              "destino": "adsfdfa",
+              "monto": 55555,
+              "conductorRut": "29770279",
+              "horaSalida": "timestampxxx",
+              "horaLlegada": "timestampyyy"
+          }
+      ],
+      "auto":{
+          "marca": "Mazda",
+          "modelo": "mx5",
+          "patente": "XXDDSS",
+          "color": "rojo",
+          "anio": 2023
+      },
+      "viajesRealizadosConductor":[
+          {
+              "origen": "cxxxx",
+              "destino": "adsfdfa",
+              "monto": 55555,
+              "pasajeroRut": "29770279",
+              "horaSalida": "timestampxxx",
+              "horaLlegada": "timestampyyy"
+          }
+      ]
+  }
+]

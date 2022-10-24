@@ -38,12 +38,10 @@ export class TripHistoryPage implements OnInit {
   tripsFormat = this.trips.map((trip) => {
     const horaSalidaTemporal = new Date(parseInt(trip.horaSalida));
     const horaLlegadaTemporal = new Date(parseInt(trip.horaLlegada));
-    trip.horaSalida = horaSalidaTemporal.getDate()
 
+    trip.horaSalida = horaSalidaTemporal.getDate()
     trip.horaLlegada = horaLlegadaTemporal.getDate()
 
-    console.log('Hora 3: ', trip.horaLlegada);
-    console.log('Hora 4: ', trip.horaSalida);
     return trip;
   });
   constructor() {}
