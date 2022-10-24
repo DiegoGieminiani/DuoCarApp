@@ -47,22 +47,25 @@ export class MapboxService {
           zoom: this.zoom,
           center: [result.coords.longitude, result.coords.latitude],
         });
+        new mapboxgl.Marker()
+        .setLngLat([result.coords.longitude, result.coords.latitude])
+        .addTo(this.map);
         this.map.addControl(
           new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
-            mapboxgl,
+            mapboxgl: mapboxgl,
           }),
 
         );
 
         const geocoder = new MapboxGeocoder({
           accessToken: mapboxgl.accessToken,
-          mapboxgl,
+          mapboxgl: mapboxgl,
         });
         resolve({
           value: {
             map: this.map,
-            geocoder,
+            geocoder: geocoder,
           },
         });
       } catch (e) {
