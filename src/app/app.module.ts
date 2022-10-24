@@ -11,10 +11,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TripHistoryPage } from './trip-history/trip-history.page';
 
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+
+
 @NgModule({
   declarations: [AppComponent, TripHistoryPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot()],
-  providers: [AuthenticationService, AuthGuardService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [AuthenticationService, AuthGuardService, Geolocation, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
