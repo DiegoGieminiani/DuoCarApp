@@ -61,6 +61,15 @@ export class HomePage implements OnInit, AfterViewInit {
     this.router.navigate([`/home/${this.username}`]);
   }
 
+  guardarDatosViaje(origen, destino, rutPasajero) {
+    return{
+      "origen": origen,
+      "destino": destino,
+      "rut": rutPasajero,
+      "precio": 5000
+    }
+  }
+
   getUbicacion() {
     let result;
     this.geolocation

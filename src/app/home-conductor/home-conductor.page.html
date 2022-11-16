@@ -1,14 +1,64 @@
-
 <head>
-  <link
+  <!--   <link
     href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css"
     rel="stylesheet"
-  />
+  /> -->
 </head>
 <ion-content [fullscreen]="true">
+
+  <ion-button fill="outline">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Origen: Mi casa</ion-card-title>
+        <ion-card-title>Destino: Duoc UC</ion-card-title>
+        <ion-card-subtitle>Monto: 5000</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ion-button >
+  <ion-button fill="outline">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Origen: Mi casa</ion-card-title>
+        <ion-card-title>Destino: Duoc UC</ion-card-title>
+        <ion-card-subtitle>Monto: 5000</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ion-button>
+  <ion-button (click)="mostrarMapa()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Origen: Mi casa</ion-card-title>
+        <ion-card-title>Destino: Duoc UC</ion-card-title>
+        <ion-card-subtitle>Monto: 5000</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ion-button>
+
+
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
+          reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
+          dicta.
+        </p>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
   <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button (click)="toHome()"tab="Home">
+      <ion-tab-button (click)="toHome()" tab="Home">
         <ion-icon name="home"></ion-icon>
         <ion-label>Home</ion-label>
       </ion-tab-button>
@@ -24,5 +74,4 @@
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
-
 </ion-content>

@@ -26,7 +26,7 @@ export class AuthenticationService {
       }
     });
   }
-  login(user, password) {
+  login(user, password, conductor: boolean = false) {
     if (user == "asdf"){
       var navigationExtras: NavigationExtras = {
         state: {
@@ -36,7 +36,12 @@ export class AuthenticationService {
         }
       };
       this.storage.set('USER_INFO', navigationExtras).then((response) => {
-        this.router.navigate([`/home/${navigationExtras.state.user}`]);
+        if (conductor) {
+          this.router.navigate([`/home-conductor/${navigationExtras.state.user}`], navigationExtras);
+        }else{
+          this.router.navigate([`/home/${navigationExtras.state.user}`], navigationExtras);
+        }
+        //this.router.navigate([`/home/${navigationExtras.state.user}`]);
 
         this.authState.next(true);
       });

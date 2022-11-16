@@ -27,12 +27,16 @@ export class LoginPage implements OnInit {
     this.animacionUno();
   }
 
-  sendDetailsWithState(userType: string) {
+  sendDetailsWithState(conductor: boolean = false) {
     const navigationExtras: NavigationExtras = {
       state: { user: this.usuario.value.user }
     };
     // eslint-disable-next-line max-len
-    this.router.navigate([`/home${userType}/${navigationExtras.state.user}`], navigationExtras);
+    if (conductor) {
+      this.router.navigate([`/home-conductor/${navigationExtras.state.user}`], navigationExtras);
+    }else{
+      this.router.navigate([`/home/${navigationExtras.state.user}`], navigationExtras);
+    }
   }
 
   //Metodo para navegar desde un metodo llamado desde el html
@@ -40,13 +44,13 @@ export class LoginPage implements OnInit {
     console.log('entramos al metodo');
     if (this.loginType === 'conductor') {
       if ('asdf' === this.usuario.value.user) {
-        this.sendDetailsWithState('-conductor');
+        this.sendDetailsWithState(true);
       } else {
         this.presentAlert();
       }
     }else{
       if ('asdf' === this.usuario.value.user) {
-        this.sendDetailsWithState('');
+        this.sendDetailsWithState();
       } else {
         this.presentAlert();
       }
@@ -62,7 +66,11 @@ export class LoginPage implements OnInit {
 
   loginUser() {
     if ((this.usuario.value.user.trim()!="") && ((this.usuario.value.pass.trim()!=""))){
-      this.authService.login(this.usuario.value.user, this.usuario.value.pass);
+      if (this.loginType === 'conductor'){
+        this.authService.login(this.usuario.value.user, this.usuario.value.pass, true);
+      } else {
+        this.authService.login(this.usuario.value.user, this.usuario.value.pass, false);
+      }
       //console.log(isAuth)
       //toHome()
 

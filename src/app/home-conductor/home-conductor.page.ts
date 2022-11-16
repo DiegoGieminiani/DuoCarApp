@@ -8,6 +8,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 })
 export class HomeConductorPage implements OnInit {
   username = this.route.snapshot.paramMap.get('userName');
+  isModalOpen = false;
 
 
   constructor(private route: ActivatedRoute, private router: Router) {}
@@ -25,6 +26,13 @@ export class HomeConductorPage implements OnInit {
 
   toHome() {
     this.router.navigate([`/home/${this.username}`]);
+  }
+
+  mostrarMapa() {
+    this.setOpen(true)
+  }
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 }
 
