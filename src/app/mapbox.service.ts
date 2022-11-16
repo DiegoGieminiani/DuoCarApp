@@ -62,6 +62,8 @@ export class MapboxService {
           accessToken: mapboxgl.accessToken,
           mapboxgl: mapboxgl,
         });
+
+        
         resolve({
           value: {
             map: this.map,

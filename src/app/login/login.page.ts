@@ -12,6 +12,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  [x: string]: any;
   loginType = this.route.snapshot.paramMap.get('userType');
   value = "asdf";
   token = "123456";
@@ -62,7 +63,7 @@ export class LoginPage implements OnInit {
 
   loginUser() {
     if ((this.usuario.value.user.trim()!="") && ((this.usuario.value.pass.trim()!=""))){
-      this.authService.login(this.usuario.value.user, this.usuario.value.pass);
+      this.authService.login(this.usuario.value.user, this.usuario.value.pass, this.userType);
       //console.log(isAuth)
       //toHome()
 

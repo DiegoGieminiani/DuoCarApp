@@ -5,16 +5,15 @@ import { Platform } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
   authState = new BehaviorSubject(false);
   constructor(
     private router: Router,
     private storage: Storage,
-    private platform: Platform,
-  )
-  {
+    private platform: Platform
+  ) {
     this.platform.ready().then(() => {
       this.ifLoggedIn();
     });
@@ -26,32 +25,64 @@ export class AuthenticationService {
       }
     });
   }
-  login(user, password) {
-    if (user == "asdf"){
-      var navigationExtras: NavigationExtras = {
-        state: {
-          user_id: '1234',
-          user: 'Nicolas Díaz',
-          message: 'Bienvenido'
-        }
-      };
-      this.storage.set('USER_INFO', navigationExtras).then((response) => {
-        this.router.navigate([`/home/${navigationExtras.state.user}`]);
+  login(user, password, userType) {
+    if (userType == 'pasajero') {
+      if (user == 'asdf') {
+        var navigationExtras: NavigationExtras = {
+          state: {
+            user_id: '1234',
+            user: 'Nicolas Díaz',
+            message: 'Bienvenido',
+          },
+        };
+        this.storage.set('USER_INFO', navigationExtras).then((response) => {
+          this.router.navigate([`/home/${navigationExtras.state.user}`]);
 
-        this.authState.next(true);
-      });
-    }else{
-      var navigationExtrasNOK: NavigationExtras = {
-        state: {
-          user_id: '',
-          user_name: '',
-          message: 'Nombre de usuario o contraseña inválidos'
+          this.authState.next(true);
+        });
+      } else {
+        var navigationExtrasNOK: NavigationExtras = {
+          state: {
+            user_id: '',
+            user_name: '',
+            message: 'Nombre de usuario o contraseña inválidos',
+          },
+        };
+        this.storage.set('USER_INFO', navigationExtrasNOK).then((response) => {
+          this.router.navigate(['mipaginados'], navigationExtras);
+          this.authState.next(false);
+        });
+      }
+    } else {
+      if (userType == 'conductor') {
+        if (user == 'asdf') {
+          var navigationExtras: NavigationExtras = {
+            state: {
+              user_id: '1234',
+              user: 'Nicolas Díaz',
+              message: 'Bienvenido',
+            },
+          };
+          this.storage.set('USER_INFO', navigationExtras).then((response) => {
+            this.router.navigate([`/home/${navigationExtras.state.user}`]);
+  
+            this.authState.next(true);
+          });
+        } else {
+          var navigationExtrasNOK: NavigationExtras = {
+            state: {
+              user_id: '',
+              user_name: '',
+              message: 'Nombre de usuario o contraseña inválidos',
+            },
+          };
+          this.storage.set('USER_INFO', navigationExtrasNOK).then((response) => {
+            this.router.navigate(['mipaginados'], navigationExtras);
+            this.authState.next(false);
+          });
         }
-      };
-      this.storage.set('USER_INFO', navigationExtrasNOK).then((response) => {
-        this.router.navigate(['mipaginados'], navigationExtras);
-        this.authState.next(false);
-      });
+      }
+
     }
   }
   logout() {
