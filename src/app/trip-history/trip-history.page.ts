@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
+import { ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-trip-history',
@@ -7,47 +7,51 @@ import axios from 'axios';
   styleUrls: ['./trip-history.page.scss'],
 })
 export class TripHistoryPage implements OnInit {
+  trips;
+  user;
+  isConductor
 
-  trips
+  constructor(private route: ActivatedRoute, private router: Router) {}
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'))
+    this.isConductor = localStorage.getItem('isConductor')
+    this.trips = JSON.parse(
+      localStorage.getItem('user')
+    ).viajesRealizadosPasajero.map((trip) => {
+      console.log(trip);
+      const horaSalidaTemporal = new Date(
+        parseInt(trip.horaSalida)
+      ).toLocaleDateString('en-US');
+      const horaLlegadaTemporal = new Date(parseInt(trip.horaLlegada));
 
-  constructor() {}
-  async ngOnInit() {
-    const headers = {
-      'Content-Type': 'text/plain',
-      "Access-Control-Allow-Origin": "*",
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-      "Access-Control-Allow-Headers": "x-access-token, Origin, X-Requested-With, Content-Type, Accept"
+      trip.horaSalida = horaSalidaTemporal;
+      trip.horaLlegada = horaLlegadaTemporal;
 
+      return trip;
+    });
+  }
+
+  
+  toProfile() {
+    this.router.navigate([`/profile`]);
+  }
+
+  toTripHistory() {
+    this.router.navigate([`/trip-history`]);
+  }
+
+  toHome() {
+    var navigationExtras: NavigationExtras = {
+      state: {
+        user_id: this.user.rut,
+        user: `${this.user.nombre} ${this.user.apellido}`,
+        message: 'Bienvenido'
+      }
     };
-    const realTrips: any = await axios
-      .post(
-        'https://xmdsydoicb.execute-api.us-east-1.amazonaws.com/estudiante',
-        {
-          rut: '2666666',
-        }, {headers}
-        )
-        .then(function (response) {
-        console.log('axios ok', response);
-        return response;
-      })
-      .catch(function (error) {
-        console.log('axios oknt', error);
-        return error;
-      });
-    console.log('axios ', realTrips);
-
-    const tripsFormat = async () => {
-      this.trips = await realTrips.data.Item.viajesRealizadosPasajero.map((trip) => {
-        console.log(trip)
-        const horaSalidaTemporal = new Date(parseInt(trip.horaSalida)).toLocaleDateString("en-US");
-        const horaLlegadaTemporal = new Date(parseInt(trip.horaLlegada));
-
-        trip.horaSalida = horaSalidaTemporal;
-        trip.horaLlegada = horaLlegadaTemporal;
-
-        return trip;
-      });
+    if (this.isConductor === "1") {
+      this.router.navigate([`/home-conductor/${navigationExtras.state.user}`], navigationExtras);
+    }else{
+      this.router.navigate([`/home/${navigationExtras.state.user}`], navigationExtras);
     }
-    await tripsFormat()
   }
 }

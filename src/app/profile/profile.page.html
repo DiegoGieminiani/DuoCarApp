@@ -1,11 +1,6 @@
-<ion-content color="warning" [fullscreen]="true" class="content">
+<ion-content color="warning" class="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>DuoCarApp</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-header collapse="condense">
-    <ion-toolbar color="warning">
       <ion-title size="large">Perfíl</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -17,66 +12,63 @@
             <ion-list class="bg-transparent">
               <ion-item color="none" lines="top">
                 <ion-label position="stacked">Nombre</ion-label>
-                <ion-input [clearInput]="true" placeholder="Ingrese nombre" value="Esteban"></ion-input>
+                <ion-input [clearInput]="true" placeholder="Ingrese nombre" value={{user.nombre}}></ion-input>
               </ion-item>
               <ion-item color="none" lines="top">
                 <ion-label position="stacked">Apellido</ion-label>
-                <ion-input [clearInput]="true" placeholder="Ingrese apellido" value="Díaz"></ion-input>
+                <ion-input [clearInput]="true" placeholder="Ingrese apellido" value={{user.apellido}}></ion-input>
               </ion-item>
               <ion-item color="none" lines="top">
                 <ion-label position="stacked">Telefono</ion-label>
-                <ion-input [clearInput]="true" placeholder="Ingrese teléfono" value="99999999"></ion-input>
+                <ion-input [clearInput]="true" placeholder="Ingrese teléfono" value={{user.telefono}}></ion-input>
               </ion-item>
               <ion-item color="none" lines="top">
                 <ion-label position="stacked">Correo</ion-label>
-                <ion-input [clearOnEdit]="true" placeholder="Ingrese correo electrónico" value="esteban@dido.cl">
+                <ion-input [clearOnEdit]="true" placeholder="Ingrese correo electrónico" value={{user.correo}}>
                 </ion-input>
               </ion-item>
               <ion-item color="none" lines="top">
                 <ion-label position="stacked">Contraseña</ion-label>
-                <ion-input type="password" placeholder="Ingrese contraseña" value="1234"></ion-input>
+                <ion-input type="password" placeholder="Ingrese contraseña" value={{user.password}}></ion-input>
               </ion-item>
-  <ion-header collapse="condense">
-    <ion-toolbar color="warning">
-      <ion-title class size="medium">vehículo</ion-title>
-    </ion-toolbar>
-  </ion-header>
-              <ion-item color="none" lines="top">
-                <ion-label position="floating">Marca</ion-label>
-                <ion-input [clearInput]="true" placeholder="Ingrese marca vehículo" value="Honda"></ion-input>
-              </ion-item>
-              <ion-item color="none" lines="top">
-                <ion-label position="floating">Modelo</ion-label>
-                <ion-input [clearInput]="true" placeholder="Ingrese modelo vehículo" value="CRV"></ion-input>
-              </ion-item>
-              <ion-item color="none" lines="top">
-                <ion-label position="floating">Patente</ion-label>
-                <ion-input [clearInput]="true" placeholder="Ingrese patente vehículo" value="55555h"></ion-input>
-              </ion-item>
-              <ion-item color="none" lines="top">
-                <ion-label position="floating">Color</ion-label>
-                <ion-input [clearInput]="true" placeholder="Ingrese color vehiculo" value="Rojo"></ion-input>
-              </ion-item>
+              <div *ngIf="user.auto !== undefined">
+                <ion-header collapse="condense">
+                  <ion-toolbar color="warning">
+                    <ion-title class size="medium">vehículo</ion-title>
+                  </ion-toolbar>
+                </ion-header>
+                <ion-item color="none" lines="top">
+                  <ion-label position="floating">Marca</ion-label>
+                  <ion-input [clearInput]="true" placeholder="Ingrese marca vehículo"
+                    value={{user.auto.marca}}></ion-input>
+                </ion-item>
+                <ion-item color="none" lines="top">
+                  <ion-label position="floating">Modelo</ion-label>
+                  <ion-input [clearInput]="true" placeholder="Ingrese modelo vehículo"
+                    value={{user.auto.modelo}}></ion-input>
+                </ion-item>
+                <ion-item color="none" lines="top">
+                  <ion-label position="floating">Patente</ion-label>
+                  <ion-input [clearInput]="true" placeholder="Ingrese patente vehículo"
+                    value={{user.auto.patente}}></ion-input>
+                </ion-item>
+                <ion-item color="none" lines="top">
+                  <ion-label position="floating">Color</ion-label>
+                  <ion-input [clearInput]="true" placeholder="Ingrese color vehiculo"
+                    value={{user.auto.color}}></ion-input>
+                </ion-item>
+              </div>
             </ion-list>
           </div>
           <br />
           <div>
-            <ion-button 
-              color="dark"
-              expand="full" 
-              shape="round"
-              size="default"
-              type="submit"
-              >Guardar</ion-button>
+            <ion-button color="dark" expand="full" shape="round" size="default" type="submit">Guardar</ion-button>
           </div>
         </form>
       </ion-card-content>
     </ion-card>
   </div>
-  </ion-content>
-
-<ion-footer class="footer">
-  <ion-tabs>
+  <ion-tabs class="paraAtras">
     <ion-tab-bar slot="bottom">
       <ion-tab-button (click)="toHome()" tab="Home">
         <ion-icon name="home"></ion-icon>
@@ -94,4 +86,4 @@
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
-</ion-footer>
+</ion-content>

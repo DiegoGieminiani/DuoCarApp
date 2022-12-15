@@ -40,12 +40,12 @@ const routes: Routes = [
   },
   {
     path: 'home-conductor/:userType',
-    component: HomeConductorPage,
+    loadChildren: () => import('./home-conductor/home-conductor.module').then( m => m.HomeConductorPageModule),
     canActivate: [AuthGuardService]
   },
   {
     path: 'profile',
-    component: ProfilePage,
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
     canActivate: [AuthGuardService]
   },
   {

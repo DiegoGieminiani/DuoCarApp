@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
   }
   ngOnInit() {
     this.animacionUno();
-  }
+    }
 
   sendDetailsWithState(conductor: boolean = false) {
     const navigationExtras: NavigationExtras = {
